@@ -1,0 +1,112 @@
+<div>
+    <div class="row" id="pdfTableprint" #pdfTableprint>
+        <div class="col-12">
+            <img src="https://i.im.ge/2022/07/09/uHneoT.png" />
+        </div>
+        <div class="pt-5">
+            <div class="row">
+                <table class="table" style="border: none !important;border: transparent !important;margin-bottom: 0px !important;">
+                    <tr>
+                        <td>
+                            <table class="table" style="border: none !important;border: transparent !important;"> 
+                                <tr>
+                                    <td>Party Name</td>
+                                </tr>
+                                <tr>
+                                    <td>{{invoice.partyName}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="table" style="border: none !important;border: transparent !important;">
+                                <tr>
+                                    <td>Invoice Date</td>
+                                </tr>
+                                <tr>
+                                    <td>{{invoice.invoiceDate | date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Invoice Number</td>
+                                </tr>
+                                <tr>
+                                    <td>{{invoice.invoiceNumber | date}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="table" style="border: none !important;border: transparent !important;">
+                                <tr>
+                                    <td>ProductionSlip Date</td>
+                                </tr>
+                                <tr>
+                                    <td>{{invoice.productionSlipDate | date}}</td>
+                                </tr>
+                                <tr>
+                                    <td>ProductionSlip Number</td>
+                                </tr>
+                                <tr>
+                                    <td>{{invoice.productionSlipNumber}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!-- <div class="col-4">
+                    <label>Party Name</label><br />
+                    <label>{{invoice.partyName}}</label>
+                </div>
+                <div class="col-4">
+                    <label>Invoice Date</label><br />
+                    <label>{{invoice.invoiceDate | date}}</label><br />
+                    <label>Invoice Number</label>
+                    <label>{{invoice.invoiceNumber}}</label>
+                </div>
+                <div class="col-4">
+                    <label>ProductionSlip Date</label><br />
+                    <label>{{invoice.productionSlipDate | date}}</label><br />
+                    <label>ProductionSlip Number</label><br />
+                    <label>{{invoice.productionSlipNumber}}</label>
+                </div> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <b>PC Items</b>
+                <table class="table">
+                    <tr>
+                        <td>Thikness</td>
+                        <td>MM</td>
+                        <td>ProfileType</td>
+                        <td>QTY</td>
+                    </tr>
+                    <tr *ngFor="let item of invoice.details">
+                        <td>{{item.thikness}}</td>
+                        <td>{{item.length}}</td>
+                        <td>{{item.profileTypeName}}</td>
+                        <td>{{item.qty}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <b>PC Base Items</b>
+                <table class="table">
+                    <tr>
+                        <td>Thikness</td>
+                        <td>ProfileType</td>
+                        <td>QTY</td>
+                    </tr>
+                    <tr *ngFor="let item of invoice.basePlateDetail">
+                        <td>{{item.thikness}}</td>
+                        <td>{{item.profileTypeName}}</td>
+                        <td>{{item.qty}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+        <button (click)="print()">Print</button>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="col-4">
+    <label>Name</label>
+    <input [(ngModel)]="profileType.name" class="form-control" />
+    <label>Orignal Value</label>
+    <input [(ngModel)]="profileType.originalValue" class="form-control" />
+    <label>Production Value</label>
+    <input [(ngModel)]="profileType.productionValue" class="form-control" />
+
+    <button type="button" class="btn btn-primary mt-2" (click)="Add()"> Add Profile Type</button>
+
+    <table class="table">
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                Action
+            </td>
+        </tr>
+        <tr *ngFor="let item of profileTypeList">
+            <td>
+                {{item.name}}
+            </td>
+            <td>
+                <button class="btn" (click)="Edit(item.id)">Edit</button>
+                <button class="btn" (click)="Delete(item.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>

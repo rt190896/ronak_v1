@@ -1,0 +1,36 @@
+
+<div class="col-4">
+    <label>Thikness</label>
+    <select class="form-control" [(ngModel)]="basePlate.thikness">
+        <option *ngFor="let item of thikness" [value]="item">{{item}}</option>
+    </select>
+    <!-- <input class="form-control" [(ngModel)]="basePlate.thikness"> -->
+
+    <label>Type</label>
+    <select class="form-control" [(ngModel)]="basePlate.type">
+        <option *ngFor="let item of profileTypeli" [value]="item.id">{{item.name}}</option>
+    </select>
+    <label>QTY</label>
+    <input class="form-control" [(ngModel)]="basePlate.qty" />
+    <label>Invoice Number</label>
+    <input class="form-control" [(ngModel)]="basePlate.invoiceNumber" />
+    <label>Invoice Date </label>
+    <input class="form-control" type="date" [(ngModel)]="basePlate.invoiceDate" />
+    <button type="button" (click)="Add()" class="btn btn-primary mt-2">Add Stock</button>
+</div>
+
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <td>Thikness</td>
+
+            <td>Type</td>
+            <td>QTY</td>
+        </tr>
+        <tr *ngFor="let item of listBasePlate">
+            <td>{{item.thikness}}</td>
+            <td>{{item.type}}</td>
+            <td>{{item.qty}}</td>
+        </tr>
+    </table>
+</div>

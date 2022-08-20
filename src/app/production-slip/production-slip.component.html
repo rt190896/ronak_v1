@@ -1,0 +1,132 @@
+<div>
+
+    <div class="p-5 mb-4 bg-light rounded-3 mt-2">
+        <div class="row">
+            <div class="col-4">
+                <label>Party Name</label>
+                <input type="text" class="form-control" [(ngModel)]="invoice.partyName">
+            </div>
+            <div class="col-4">
+                <label>Invoice Date</label>
+                <input type="date" class="form-control" [(ngModel)]="invoice.invoiceDate">
+                <label>Invoice Number</label>
+                <input type="text" class="form-control" [(ngModel)]="invoice.invoiceNumber">
+            </div>
+            <div class="col-4">
+                <label>ProductionSlip Date</label>
+                <input type="date" class="form-control" [(ngModel)]="invoice.productionSlipDate">
+                <label>ProductionSlip Number</label>
+                <input type="text" class="form-control" [(ngModel)]="invoice.productionSlipNumber">
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary mr-2 mt-2" (click)="AddItem()">Add Profile item</button>
+
+    <button class="btn btn-primary mr-2 mt-2" (click)="AddBasePlateItem()">Add BasePlate item</button>
+
+    <table class="table table-striped" style="width: 100%;" width="100%">
+        <tr>
+            <td><label>Thikness</label></td>
+            <td> <label>Meter</label></td>
+            <td><label>Type</label></td>
+            <td> <label>Profile Type</label></td>
+            <td> <label>Qty</label></td>
+            <td>Remove</td>
+        </tr>
+        <tr *ngFor="let item of invoice.details;let indexOfelement=index;">
+            <td>
+                <select class="form-control" [(ngModel)]="item.thikness">
+                    <option *ngFor="let item of thinessfornormal" [value]="item">
+                        {{item}}
+                    </option>
+                </select>
+                <!-- <input type=" text" [(ngModel)]="item.thikness" class="form-control" /> -->
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="item.length" />
+            </td>
+            <td>
+                <select class="form-control" [(ngModel)]="item.type">
+                    <option value="1">
+                        Dimond
+                    </option>
+                    <option value="2">
+                        Ambos
+                    </option>
+                    <option value="3">
+                        Compact
+                    </option>
+                    <option value="4">
+                        MultiWall
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" [(ngModel)]="item.profileType"
+                    (ngModelChange)="ChangesProfileType(indexOfelement)">
+                    <option *ngFor="let item of profileTypeli" [value]="item.id">{{item.name}}</option>
+                </select>
+                <!-- <input type="text" class="form-control" [(ngModel)]="invoice.productionValue" /> -->
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="item.qty" />
+            </td>
+            <td>
+                <button (click)="RemoveItem(indexOfelement)">delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-striped" style="width: 100%;" width="100%">
+        <tr>
+            <td><label>Thikness</label></td>
+            <td><label>Type</label></td>
+            <td><label>QTY.</label></td>
+            <td>Remove</td>
+        </tr>
+        <tr *ngFor="let item of invoice.basePlateDetail;let indexOfelement=index;">
+            <td>
+                <!-- <input type=" text" [(ngModel)]="item.thikness" class="form-control" /> -->
+                <select [(ngModel)]="item.thikness" class="form-control">
+                    <option *ngFor="let item of thinessforBasePlate" [value]="item">
+                        {{item}}
+                    </option>
+                </select>
+            </td>
+            <td>
+                <select class="form-control" [(ngModel)]="item.type"
+                    (ngModelChange)="ChangesProfileType(indexOfelement)">
+                    <option *ngFor="let item of profileTypeli" [value]="item.id">{{item.name}}</option>
+                </select>
+                <!-- <input type="text" class="form-control" [(ngModel)]="invoice.productionValue" /> -->
+            </td>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]="item.qty" />
+            </td>
+            <td>
+                <button (click)="RemoveItem(indexOfelement)">delete</button>
+            </td>
+        </tr>
+    </table>
+    <!-- <label>Invoice Number</label>
+    <input type="text" class="form-control" [(ngModel)]="invoice.qty" /> -->
+    <button type="button" (click)="Add()">Add Slip</button>
+
+
+
+    <table class="table table-striped table-bordered">
+        <tr>
+            <td>Party Name</td>
+            <td>Production Slip</td>
+            <td>Production Date </td>
+            <td>View Detail</td>
+        </tr>
+        <tr *ngFor="let item of invoiceList">
+            <td>{{item.partyName}}</td>
+            <td>{{item.productionSlipNumber}}</td>
+            <td>{{item.productionSlipDate}}</td>
+            <td> <button class="fa fa-eye btn" [routerLink]="['/viewprodDetail/'+item.id]"></button></td>
+        </tr>
+    </table>
+</div>
